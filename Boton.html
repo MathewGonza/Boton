@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Busqueda en Sitio</title>
+  <style>
+    .search-box {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .search-box input {
+      padding: 10px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .search-box button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    .search-results {
+      margin-top: 20px;
+      text-align: left;
+    }
+    .search-result {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="search-box">
+    <input type="text" id="search-query" placeholder="Buscar...">
+    <button onclick="performSearch()">Buscar</button>
+  </div>
+
+  <div class="search-results">
+    <div class="search-result" data-keywords="historia médica paciente">
+      <h3>Historia Médica del Paciente</h3>
+      <p>Detalles de la historia médica del paciente incluyendo diagnósticos y tratamientos.</p>
+    </div>
+    <div class="search-result" data-keywords="recetas médicas">
+      <h3>Recetas Médicas</h3>
+      <p>Listado de todas las recetas médicas emitidas.</p>
+    </div>
+    <div class="search-result" data-keywords="citas médicas">
+      <h3>Citas Médicas</h3>
+      <p>Información sobre las citas médicas programadas y su historial.</p>
+    </div>
+    <!-- Añade más divs con clase 'search-result' y el atributo 'data-keywords' según tus necesidades -->
+  </div>
+
+  <script>
+    function performSearch() {
+      var query = document.getElementById('search-query').value.toLowerCase();
+      var results = document.querySelectorAll('.search-result');
+
+      results.forEach(function(result) {
+        var keywords = result.getAttribute('data-keywords');
+        if (keywords.toLowerCase().includes(query)) {
+          result.style.display = 'block';
+        } else {
+          result.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
